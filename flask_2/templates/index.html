@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container my-4">
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="col-lg-6 px-0">
+      <h1 class="display-4 fst-italic">My Todo </h1>
+      <p class="lead my-3">It’s a list of tasks you need to complete or things that you want to do.</p>
+    </div>
+  </div>
+  <div class="row mb-2 ">
+    <div class="col-md-6">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-primary btn-lg mx-4" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Add a Todo
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Todo</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <form action="/" method="POST">
+                <div class="mb-3">
+                  <label for="title" class="form-label">Todo Title</label>
+                  <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="desc" class="form-label">Todo Description</label>
+                  <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-primary btn-lg mx-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        My Todos
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">My Todos</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              {% if allTodo|length == 0 %}
+
+              <div class="alert alert-primary" role="alert">
+                No Todos found. Add your first todo now!
+              </div>
+              {% else %}
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">SNo</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {% for todo in allTodo %}
+                  <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.desc}}</td>
+                    <td>{{todo.date_created}}</td>
+                    <td>
+                      <a href="/update/{{todo.sno}}" type="button"
+                        class="btn btn-outline-primary btn-sm m-1" >Update</button>
+                        <a href="/delete/{{todo.sno}}" type="button"
+                          class="btn btn-outline-primary btn-sm m-1" onclick="myFunction_2()">Delete</button>
+
+                    </td>
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% endif %}
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+{% block js %}
+<script>
+  function myFunction() {
+    alert("Your todo is submitted");
+  }
+  function myFunction_2() {
+    alert("Your todo is deleted");
+  }
+</script>
+{% endblock js%}

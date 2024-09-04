@@ -1,0 +1,15 @@
+{
+    "params":{
+        "local_server":"True",
+        "local_uri":"mysql://root:15112003@localhost/flaskblog",
+        "prod_uri":"mysql://root:15112003@localhost/flaskblog",
+        "fb_url":"https://www.youtube.com/watch?v=wTgrZE9RWNY&list=RDMMwTgrZE9RWNY&start_radio=1",
+        "tw_url":"https://www.youtube.com/watch?v=wTgrZE9RWNY&list=RDMMwTgrZE9RWNY&start_radio=1",
+        "gh_url":"https://www.youtube.com/watch?v=wTgrZE9RWNY&list=RDMMwTgrZE9RWNY&start_radio=1",
+        "blog_title":"Flask-blog",
+        "gmail-user":"heue63728i2@gmail.com",
+        "gmail-password":"slni gwzi beni zzag",
+        "my_url":"https://www.youtube.com/watch?v=fzDEaX1OY98&list=RDWxEmaBaLHVk&index=2",
+        "no_of_posts": 3
+    }
+}
