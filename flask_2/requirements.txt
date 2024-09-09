@@ -1,0 +1,4 @@
+flask
+werkzeug
+datetime
+flask_sqlalchemy
