@@ -1,4 +1,5 @@
-flask
+Flask         
+SQLAlchemy    
+Flask-SQLAlchemy
 werkzeug
 datetime
-flask_sqlalchemy
